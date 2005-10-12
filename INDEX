@@ -1,0 +1,10 @@
+covnormpoly4            Covariance matrix of the parameters of the
+                        normal-polynomial quantile mixture
+data2cauchypoly4        Estimation of the Cauchy-polynomial quantile
+                        mixture
+data2normpoly4          Estimation of normal-polynomial quantile
+                        mixture
+Lmoments                L-moments
+qcauchypoly             Cauchy-polynomial quantile mixture
+qnormpoly               Normal-polynomial quantile mixture
+t1lmoments              Trimmed L-moments
