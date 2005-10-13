@@ -141,7 +141,7 @@ Acovmat
 
 data2cauchypoly4<-function(data)
 {
-tlmoms<-TLmoments(data)
+tlmoms<-t1lmoments(data)
 params<-t1lmom2cauchypoly4(tlmoms)
 params
 }
@@ -214,7 +214,7 @@ denom<-denom+param[order+1]*pi*(1/cos(pi*(cp-0.5)))^2;
 density<-1/denom;
 
 # If coefficient for the normal part is zero, the distribution is bounded.
-if (param[order+1]==0) density<-density.*(x<=sum(param))*(x>=param(1));
+if (param[order+1]==0) density<-density*(x<=sum(param))*(x>=param(1));
 
 density
 }
