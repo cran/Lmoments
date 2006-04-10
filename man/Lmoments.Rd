@@ -2,6 +2,8 @@
 \alias{Lmoments}
 \alias{Lcoefs}
 \alias{Lmomcov}
+\alias{Lmoments_calc}
+\alias{Lmomcov_calc}
 \concept{moments}
 \concept{skewness}
 \concept{kurtosis}
@@ -11,20 +13,37 @@
   Calculates sample L-moments, L-coefficients and covariance matrix of L-moments. 
 }
 \usage{
-Lmoments(data,rmax=4)
-Lcoefs(data)
-Lmomcov(data,rmax=4)
+Lmoments(data,rmax=4,na.rm=FALSE,returnobject=FALSE,trim=c(0,0))
+Lcoefs(data,rmax=4,na.rm=FALSE,trim=c(0,0))
+Lmomcov(data,rmax=4,na.rm=FALSE)
+Lmoments_calc(data,rmax=4)
+Lmomcov_calc(data,rmax=4)
 }
 \arguments{
-  \item{data}{matrix or data frame}
-  \item{rmax}{maximum order of L-moments}
+  \item{data}{matrix or data frame.}
+  \item{rmax}{maximum order of L-moments.}
+  \item{na.rm}{a logical value indicating whether 'NA' values should be
+          removed before the computation proceeds.}
+  \item{returnobject}{a logical value indicating whether a list object should be returned instead of an array of L-moments.}
+  \item{trim}{c(0,0) for ordinary L-moments and c(1,1) for trimmed (t=1) L-moments}
 }
-\value{\code{Lmoments} returns an array of L-moments containing a row for each variable in data. 
-\code{Lcoefs} returns an array of L-coefficients (L-mean, L-scale, L-skewness, L-kurtosis) 
-containing a row for each variable in data.
-Lmomcov returns the covariance matrix of L-moments.}
+\value{
+\item{Lmoments}{ returns an array of L-moments containing a row for each variable in data, or if returnobject=TRUE, 
+a list containing 
+\item{lambdas}{an array of L-moments} 
+\item{ratios}{an array of mean, L-scale and L-moment ratios}
+\item{trim}{the value of the parameter 'trim'}
+\item{source}{a string with value "Lmoments" or "t1lmoments"}.} 
+\item{Lcoefs}{returns an array of L-coefficients (mean, L-scale, L-skewness, L-kurtosis, ...) 
+containing a row for each variable in data.}
+\item{Lmomcov}{returns the covariance matrix of L-moments or a list of covariance matrices if the input has multiple columns.}
+\item{Lmoments_calc}{is internal function.}
+\item{Lmomcov_calc}{is internal function.}}
+
+\note{Functions \code{Lmoments} and \code{Lcoefs} calculate trimmed L-moments if you specify \code{trim=c(1,1)}.}
+
 \references{Karvanen, J. 2005. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
-Accepted for publication in \emph{Computational Statistics & Data Analysis} 
+\emph{Computational Statistics & Data Analysis}, in press, 
 \url{http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf}.
 
 Elamir, E. A., Seheult, A. H. 2004. Exact variance structure of sample L-moments, \emph{Journal of 
@@ -33,9 +52,9 @@ Statistical Planning and Inference} \bold{124} (2) 337--359.
 Hosking, J. 1990. L-moments: Analysis and estimation distributions using linear combinations of order statistics, 
 \emph{Journal of Royal Statistical Society B} \bold{52}, 105--124.
 }
-\seealso{\code{\link{t1lmoments}} for trimmed L-moments, and 
+\seealso{\code{\link{t1lmoments}} for trimmed L-moments,
 \code{\link{dnormpoly}}, \code{\link{lmom2normpoly4}} and \code{\link{covnormpoly4}} for the normal-polynomial quantile mixture
-}
+and package \pkg{lmomco} for additional L-moment functions}
 \examples{
 #Generates a sample 500 observations from the normal-polynomial quantile mixture, 
 #calculates the L-moments and their covariance matrix,

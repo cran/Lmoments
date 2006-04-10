@@ -1,0 +1,10 @@
+1.1-1: 	Added 'na.rm' parameter to the L-moments functions.
+	Added 'returnobject' parameter to the L-moments functions.
+	Added 'trim' parameter to the L-moments functions.
+	Fixed problems with user-specified 'rmax' in the L-moments functions.
+	Improved function 'Lmomcov'.
+	Fixed the syntax error in the bounded special case in functions 'dnormpoly' and 'dcauchypoly' 
+	Added column names to the output of the L-moments functions.
+	Suggestions from William Asquith and Michael Toewns are acknowledged.
+
+1.0-2: First release to CRAN
