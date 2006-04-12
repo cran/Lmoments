@@ -13,7 +13,7 @@ covnormpoly4(data)
 \details{
 }
 \references{Karvanen, J. 2005. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
-Accepted for publication in \emph{Computational Statistics & Data Analysis}
+\emph{Computational Statistics & Data Analysis}, in press,
 \url{http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf}.
 }
 \seealso{\code{\link{Lmomcov}} for covariance matrix of L-moments, 

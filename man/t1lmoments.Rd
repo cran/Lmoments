@@ -9,14 +9,18 @@
 \description{
 Calculates sample trimmed L-moments with trimming parameter 1. }
 \usage{
-t1lmoments(data)
+t1lmoments(data,rmax=4)
 }
 \arguments{
-  \item{data}{matrix or data frame}
+  \item{data}{matrix or data frame.}
+    \item{rmax}{maximum order of trimmed L-moments.}
 }
 \value{array of trimmed L-moments (trimming parameter = 1) up to order 4 containing a row for each variable in data.}
+
+\note{Functions \code{link{Lmoments}} and \code{link{Lcoefs}} calculate trimmed L-moments if you specify \code{trim=c(1,1)}.}
+
 \references{Karvanen, J. 2005. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
-Accepted for publication in \emph{Computational Statistics & Data Analysis}
+\emph{Computational Statistics & Data Analysis}, in press,
 \url{http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf}.
 
 Elamir, E. A., Seheult, A. H. 2003. Trimmed L-moments, 

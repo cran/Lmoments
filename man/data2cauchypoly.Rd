@@ -16,7 +16,8 @@ t1lmom2cauchypoly4(t1lmom)
 \details{
 }
 \references{Karvanen, J. 2005. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
-Accepted for publication in \emph{Computational Statistics & Data Analysis}
+\emph{Computational Statistics & Data Analysis}, in press
+\url{http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf}.
 }
 \seealso{\code{\link{t1lmoments}} for trimmed L-moments, 
 \code{\link{dcauchypoly}} for the Cauchy-polynomial quantile mixture and

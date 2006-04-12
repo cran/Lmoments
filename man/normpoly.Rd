@@ -39,7 +39,7 @@ param[k] is the mixture coefficient for normal distribution. (Functions normpoly
 normpoly\_rnd are aliases for compatibility with older versions of this package.)
 }
 \references{Karvanen, J. 2005. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
-Accepted for publication in \emph{Computational Statistics & Data Analysis}
+\emph{Computational Statistics & Data Analysis}, in press,
 \url{http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf}.
 }
 \seealso{\code{\link{data2normpoly4}} for the parameter estimation and
