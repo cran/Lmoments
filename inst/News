@@ -1,3 +1,6 @@
+1.1-2	Updated publication info.
+	Corrected an error in the function 'covnormpoly4'.
+
 1.1-1: 	Added 'na.rm' parameter to the L-moments functions.
 	Added 'returnobject' parameter to the L-moments functions.
 	Added 'trim' parameter to the L-moments functions.
