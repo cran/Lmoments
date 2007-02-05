@@ -1,22 +1,25 @@
 citHeader("To cite the Lmoments package use:")
 
-citEntry(entry="in press",
+citEntry(entry="article",
         title = "Estimation of quantile mixtures via L-moments and
 	trimmed L-moments, Computational Statistics & Data Analysis",
         author =personList(person("Juha","Karvanen",email="juha.karvanen@ktl.fi")),
-	year=2005,
-	url="http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf",        
+	year=2006,
+	volume=51,
+	number=2,
+	pages="947-959",
+       
 
-	textVersion ="J. Karvanen, Estimation of quantile mixtures via
+	textVersion ="J. Karvanen (2006), Estimation of quantile mixtures via
 	L-moments and trimmed L-moments, Computational Statistics & Data
-	Analysis, in press, http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf"
+	Analysis, Volume 51, Issue 2, pages 947-959."
 )
 
 citEntry(entry="manual",
         title = "Lmoments: L-moments and quantile mixtures",
     	author = personList(person("Juha","Karvanen",email="juha.karvanen@ktl.fi")),
-    	year = 2005,
-    	note = "R package version 1.1-1",
+    	year = 2007,
+    	note = "R package version 1.1-2",
    
-	textVersion ="Juha Karvanen (2006). Lmoments: L-moments and quantile mixtures. R package version 1.1-1"
+	textVersion ="Juha Karvanen (2006). Lmoments: L-moments and quantile mixtures. R package version 1.1-2"
 )

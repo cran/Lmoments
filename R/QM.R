@@ -1,5 +1,5 @@
 #File:		QM.R
-#Version:	1.0-1
+#Version:	1.1-2
 #Author:	Juha Karvanen
 #Date:		11 October 2005
 
@@ -132,7 +132,7 @@ covnormpoly4<-function(data)
 #data is vector
 Lcovmat<-Lmomcov(data);
 eta2<-1/sqrt(pi);
-eta4<-(30*atan(sqrt(2))-9)*eta2;
+eta4<-(30*atan(sqrt(2))/pi-9)*eta2;
 A<-t(array(c(1,-3,5,3*eta2/eta4,0,6,-30,-6*eta2/eta4,0,0,30,0,0,0,0,1/eta4),c(4,4)))
 Acovmat<-A%*%Lcovmat%*%t(A);
 Acovmat
