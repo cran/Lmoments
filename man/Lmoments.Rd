@@ -28,22 +28,27 @@ Lmomcov_calc(data,rmax=4)
   \item{trim}{c(0,0) for ordinary L-moments and c(1,1) for trimmed (t=1) L-moments}
 }
 \value{
-\item{Lmoments}{ returns an array of L-moments containing a row for each variable in data, or if returnobject=TRUE, 
+\code{Lmoments} returns an array of L-moments containing a row for each variable in data, or if returnobject=TRUE, 
 a list containing 
 \item{lambdas}{an array of L-moments} 
 \item{ratios}{an array of mean, L-scale and L-moment ratios}
 \item{trim}{the value of the parameter 'trim'}
-\item{source}{a string with value "Lmoments" or "t1lmoments"}.} 
-\item{Lcoefs}{returns an array of L-coefficients (mean, L-scale, L-skewness, L-kurtosis, ...) 
-containing a row for each variable in data.}
-\item{Lmomcov}{returns the covariance matrix of L-moments or a list of covariance matrices if the input has multiple columns.}
-\item{Lmoments_calc}{is internal function.}
-\item{Lmomcov_calc}{is internal function.}}
+\item{source}{a string with value "Lmoments" or "t1lmoments".}
+
+\code{Lcoefs} returns an array of L-coefficients (mean, L-scale, L-skewness, L-kurtosis, ...) 
+containing a row for each variable in data.
+
+\code{Lmomcov} returns the covariance matrix of L-moments or a list of covariance matrices if the input has multiple columns.
+
+\code{Lmoments_calc} is an internal function.
+
+\code{Lmomcov_calc} is an internal function.
+}
 
 \note{Functions \code{Lmoments} and \code{Lcoefs} calculate trimmed L-moments if you specify \code{trim=c(1,1)}.}
 
-\references{Karvanen, J. 2005. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
-\emph{Computational Statistics & Data Analysis}, in press, 
+\references{Karvanen, J. 2006. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
+\emph{Computational Statistics & Data Analysis} \bold{51}, (2), 947--959.
 \url{http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf}.
 
 Elamir, E. A., Seheult, A. H. 2004. Exact variance structure of sample L-moments, \emph{Journal of 
@@ -70,7 +75,7 @@ plotpoints<-seq(min(x)-1,max(x)+1,by=0.01);
 lines(plotpoints,dnormpoly(plotpoints,estim_params),col='red');
 lines(plotpoints,dnormpoly(plotpoints,true_params),col='blue');
 }
-\author{Juha Karvanen <\email{juha.karvanen@ktl.fi}>}
+\author{Juha Karvanen <\email{juha.karvanen@thl.fi}>}
 \keyword{robust}
 \keyword{univar}
 
