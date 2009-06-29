@@ -15,8 +15,8 @@ t1lmom2cauchypoly4(t1lmom)
 \value{vector containing the four parameters of the Cauchy-polynomial quantile mixture}
 \details{
 }
-\references{Karvanen, J. 2005. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
-\emph{Computational Statistics & Data Analysis}, in press
+\references{Karvanen, J. 2006. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
+\emph{Computational Statistics & Data Analysis} \bold{51}, (2), 947--959.
 \url{http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf}.
 }
 \seealso{\code{\link{t1lmoments}} for trimmed L-moments, 
@@ -37,7 +37,7 @@ hist(x,breaks=histpoints,freq=FALSE,xlim=c(-10,10));
 lines(plotpoints,dcauchypoly(plotpoints,estim_params),col='red');
 lines(plotpoints,dcauchypoly(plotpoints,true_params),col='blue');
 }
-\author{Juha Karvanen \email{juha.karvanen@ktl.fi}}
+\author{Juha Karvanen \email{juha.karvanen@thl.fi}}
 \keyword{distribution}
 \keyword{robust}
 

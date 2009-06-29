@@ -17,8 +17,8 @@ lmom2normpoly6(lmom)
   \item{lmom}{vector or matrix of L-moments}
 }
 \value{vector or matrix containing the four or six parameters of normal-polynomial quantile mixture}
-\references{Karvanen, J. 2005. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
-\emph{Computational Statistics & Data Analysis}, in press,
+\references{Karvanen, J. 2006. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
+\emph{Computational Statistics & Data Analysis} \bold{51}, (2), 947--959.
 \url{http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf}.
 }
 \seealso{\code{\link{dnormpoly}} for L-moments, 
@@ -39,7 +39,7 @@ plotpoints<-seq(min(x)-1,max(x)+1,by=0.01);
 lines(plotpoints,dnormpoly(plotpoints,estim_params),col='red');
 lines(plotpoints,dnormpoly(plotpoints,true_params),col='blue');
 }
-\author{Juha Karvanen \email{juha.karvanen@ktl.fi}}
+\author{Juha Karvanen \email{juha.karvanen@thl.fi}}
 \keyword{distribution}
 \keyword{robust}
 
