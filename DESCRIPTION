@@ -1,6 +1,6 @@
 Package: Lmoments
-Version: 1.1-3
-Date: 2009-06-29
+Version: 1.1-4
+Date: 2011-01-18
 Title: L-moments and quantile mixtures
 Author: Juha Karvanen
 Maintainer: Juha Karvanen <juha.karvanen@iki.fi>
@@ -12,6 +12,6 @@ Description: The Lmoments package contains functions to estimate
         mixture from L-moments and trimmed L-moments.
 License: GPL-2
 URL: http://www.tilastotiede.fi/juha_karvanen.html
-Packaged: 2009-06-29 08:20:48 UTC; jkau
+Packaged: 2011-01-18 18:34:04 UTC; Q
 Repository: CRAN
-Date/Publication: 2009-06-29 09:39:37
+Date/Publication: 2011-01-19 08:21:08
