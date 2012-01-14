@@ -41,7 +41,7 @@ cauchypoly\_rnd are aliases for compatibility with older versions of this packag
 }
 \references{Karvanen, J. 2006. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
 \emph{Computational Statistics & Data Analysis} \bold{51}, (2), 947--959.
-\url{http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf}.
+\url{http://www.bsp.brain.riken.jp/publications/2006/karvanen_quantile_mixtures.pdf}.
 }
 \seealso{\code{\link{data2cauchypoly4}} for the parameter estimation and
 \code{\link{dnormpoly}} for the normal-polynomial quantile mixture.}
@@ -60,7 +60,7 @@ hist(x,breaks=histpoints,freq=FALSE,xlim=c(-10,10));
 lines(plotpoints,dcauchypoly(plotpoints,estim_params),col='red');
 lines(plotpoints,dcauchypoly(plotpoints,true_params),col='blue');
 }
-\author{Juha Karvanen \email{juha.karvanen@thl.fi}}
+\author{Juha Karvanen \email{juha.karvanen@iki.fi}}
 \keyword{distribution}
 \keyword{robust}
 
