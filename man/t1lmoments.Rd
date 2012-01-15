@@ -21,7 +21,7 @@ t1lmoments(data,rmax=4)
 
 \references{Karvanen, J. 2006. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
 \emph{Computational Statistics & Data Analysis} \bold{51}, (2), 947--959.
-\url{http://www.bsp.brain.riken.jp/publications/2005/karvanen_quantile_mixtures.pdf}.
+\url{http://www.bsp.brain.riken.jp/publications/2006/karvanen_quantile_mixtures.pdf}.
 
 Elamir, E. A., Seheult, A. H. 2003. Trimmed L-moments, 
 \emph{Computational Statistics & Data Analysis} \bold{43}, 299--314.
@@ -43,7 +43,7 @@ hist(x,breaks=histpoints,freq=FALSE,xlim=c(-10,10));
 lines(plotpoints,dcauchypoly(plotpoints,estim_params),col='red');
 lines(plotpoints,dcauchypoly(plotpoints,true_params),col='blue');
 }
-\author{Juha Karvanen \email{juha.karvanen@thl.fi}}
+\author{Juha Karvanen \email{juha.karvanen@iki.fi}}
 \keyword{robust}
 \keyword{univar}
 
