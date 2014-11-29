@@ -1,3 +1,5 @@
+1.1-6   Again a completely useless update due to a warning in CRAN checkings. 
+
 1.1-4   Added "journal" field to the citation info. 
         The missing field was causing a warning in CRAN checkings. 
 

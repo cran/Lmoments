@@ -13,8 +13,7 @@ t1lmom2cauchypoly4(t1lmom)
   \item{t1lmom}{vector of trimmed L-moments}
 }
 \value{vector containing the four parameters of the Cauchy-polynomial quantile mixture}
-\details{
-}
+
 \references{Karvanen, J. 2006. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
 \emph{Computational Statistics & Data Analysis} \bold{51}, (2), 947--959.
 \url{http://www.bsp.brain.riken.jp/publications/2006/karvanen_quantile_mixtures.pdf}.
