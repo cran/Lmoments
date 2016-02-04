@@ -129,112 +129,102 @@ Lmomcov<-function(data,rmax=4,na.rm=FALSE)
     }
 }
 
-Lmomcov_calc<-function(data,rmax=4)
+Lmomcov_calc <- function (data, rmax = 4) 
 {
-    rmax_out<-min(rmax,4);
-    if (rmax!=4)
-    {
-        if (rmax>4) warning("The current version of Lmomcov uses rmax=4.")
-        rmax<-4;
+  C <- shiftedlegendre(rmax)
+  if (!is.matrix(data)) 
+    data <- as.matrix(data)
+  n <- dim(data)[1]
+  p <- dim(data)[2]
+  x <- array(, c(p, n))
+  for (i in 1:p) {
+    x[i, ] <- sort(data[, i])
+  }
+  bcoef <- array(, c(rmax, n))
+  b1coef <- array(, c(rmax, n))
+  b2coef <- array(, c(rmax, rmax, n))
+  b20coef <- array(, c(rmax, n))
+  bcoefm <- array(, c(rmax, p, n))
+  b <- array(, c(p, rmax))
+  bcoef[1, ] <- seq(0, 1, by = (1/(n - 1)))
+  bcoefm[1, , ] <- t(array(rep(bcoef[1, ], p), c(n, p)))
+  b[, 1] <- rowMeans(x)
+  b[, 2] <- rowMeans(bcoefm[1, , ] * x)
+  for (r in 2:(rmax - 1)) {
+    rr <- r + 1
+    bcoef[r, ] <- bcoef[r - 1, ] * seq((-(r - 1)/(n - r)), 
+                                       1, by = (1/(n - r)))
+    bcoefm[r, , ] <- t(array(rep(bcoef[r, ], p), c(n, p)))
+    b[, rr] <- rowMeans(bcoefm[r, , ] * x)
+  }
+  b20coef[1, ] <- seq((-1)/(n - 2), (n - 2)/(n - 2), by = 1/(n - 
+                                                               2))
+  b1coef[1, ] <- seq(0, (n - 1)/(n - 2), by = 1/(n - 2))
+  for (k in 1:(rmax - 1)) {
+    if (k > 1) {
+      b20coef[k, ] <- b20coef[k - 1, ] * seq((-k)/(n - 
+                                                     1 - k), (n - 1 - k)/(n - 1 - k), by = 1/(n - 
+                                                                                                1 - k))
+      b1coef[k, ] <- b1coef[k - 1, ] * seq((-k + 1)/(n - 
+                                                       1 - k), (n - k)/(n - 1 - k), by = 1/(n - 1 - 
+                                                                                              k))
     }
-    C<-t(array(c(1,0,0,0,-1,2,0,0,1,-6,6,0,-1,12,-30,20),c(4,4)))
-    if (!is.matrix(data)) data<-as.matrix(data);
-    
-    n<-dim(data)[1];
-    p<-dim(data)[2]
-    x<-array(,c(p,n));
-    for (i in 1:p)
-    {
-        x[i,]<-sort(data[,i]);
+    b2coef[k, 1, ] <- seq((-k - 1)/(n - k - 2), (n - k - 
+                                                   2)/(n - k - 2), by = 1/(n - k - 2))
+    for (l in 2:(rmax - 1)) {
+      b2coef[k, l, ] <- b2coef[k, l - 1, ] * seq((-k - 
+                                                    l)/(n - k - l - 1), (n - k - 1 - l)/(n - k - 
+                                                                                           l - 1), by = 1/(n - k - l - 1))
     }
-    
-    bcoef<-array(,c(rmax,n));
-    b1coef<-array(,c(rmax,n));
-    b2coef<-array(,c(rmax,rmax,n));
-    b20coef<-array(,c(rmax,n));
-    bcoefm<-array(,c(rmax,p,n));
-    b<-array(,c(p,rmax));
-    
-    bcoef[1,]<-seq(0,1,by=(1/(n-1)));
-    bcoefm[1,,]<-t(array(rep(bcoef[1,],p),c(n,p))); 
-    b[,1]<-rowMeans(x);
-    b[,2]<-rowMeans(bcoefm[1,,]*x);
-    
-    for (r in 2:(rmax-1))
-    {
-        rr<-r+1;
-        bcoef[r,]<-bcoef[r-1,]*seq((-(r-1)/(n-r)),1,by=(1/(n-r)));
-        bcoefm[r,,]<-t(array(rep(bcoef[r,],p),c(n,p))); 
-        b[,rr]<-rowMeans(bcoefm[r,,]*x);
-    }
-    
-    b20coef[1,]<-seq((-1)/(n-2),(n-2)/(n-2),by=1/(n-2))
-    b1coef[1,]<-seq(0,(n-1)/(n-2),by=1/(n-2));
-    for (k in 1:(rmax-1))
-    {
-        if (k>1) 
-        {
-            b20coef[k,]<-b20coef[k-1,]*seq((-k)/(n-1-k),(n-1-k)/(n-1-k),by=1/(n-1-k));
-            b1coef[k,]<-b1coef[k-1,]*seq((-k+1)/(n-1-k),(n-k)/(n-1-k),by=1/(n-1-k));
+  }
+  covmatrixlist <- list()
+  for (i in 1:p) {
+    theta <- array(, c(rmax, rmax))
+    xx <- outer(as.vector(x[i, ]), as.vector(x[i, ]))
+    xx[!upper.tri(xx)] <- 0
+    for (k in 0:(rmax - 1)) {
+      for (l in 0:(rmax - 1)) {
+        if (k > 0 & l > 0) {
+          term1 <- outer(b1coef[k, ], b2coef[k, l, ])
+          term2 <- outer(b1coef[l, ], b2coef[l, k, ])
         }
-        b2coef[k,1,]<-seq((-k-1)/(n-k-2),(n-k-2)/(n-k-2),by=1/(n-k-2));
-        for (l in 2:(rmax-1))
-        {
-            b2coef[k,l,]<-b2coef[k,l-1,]*seq((-k-l)/(n-k-l-1),(n-k-1-l)/(n-k-l-1),by=1/(n-k-l-1))
+        if (k == 0 & l > 0) {
+          term1 <- outer(rep(1, n), b20coef[l, ])
+          term2 <- outer(b1coef[l, ], rep(1, n))
         }
-    }
-    
-    covmatrixlist<-list();
-    for (i in 1:p)
-    {
-        theta<-array(,c(4,4))
-        xx<-outer(as.vector(x[i,]),as.vector(x[i,]));
-        xx[!upper.tri(xx)]<-0;
-        for (k in 0:(rmax-1))
-        {
-            for (l in 0:(rmax-1))
-                {
-                if (k>0 & l>0)
-                {
-                term1<-outer(b1coef[k,],b2coef[k,l,])
-                term2<-outer(b1coef[l,],b2coef[l,k,])
-                } 
-                if (k==0 & l>0)
-                {
-                term1<-outer(rep(1,n),b20coef[l,])
-                term2<-outer(b1coef[l,],rep(1,n))
-                } 
-                if (k>0 & l==0)
-                {
-                term1<-outer(b1coef[k,],rep(1,n))
-                term2<-outer(rep(1,n),b20coef[k,])
-                } 
-                if (k==0 & l==0)
-                {
-                term1<-outer(rep(1,n),rep(1,n))
-                term2<-outer(rep(1,n),rep(1,n))
-                }
-                term1[!upper.tri(term1)]<-0;
-                term2[!upper.tri(term2)]<-0;
-                
-                jointbb<-sum((term1+term2)*xx)/(n*(n-1));
-                
-                theta[k+1,l+1]<-b[i,k+1]*b[i,l+1]-jointbb;
-            }
+        if (k > 0 & l == 0) {
+          term1 <- outer(b1coef[k, ], rep(1, n))
+          term2 <- outer(rep(1, n), b20coef[k, ])
         }
-        covmatrix<-C%*%theta%*%t(C);
-        if (rmax_out!=4) { covmatrix<-covmatrix[1:rmax_out,1:rmax_out]; }
-        rownames(covmatrix)<-paste("L",1:rmax_out,sep="");
-        colnames(covmatrix)<-paste("L",1:rmax_out,sep="");
-        covmatrixlist[[i]]<-covmatrix;
+        if (k == 0 & l == 0) {
+          term1 <- outer(rep(1, n), rep(1, n))
+          term2 <- outer(rep(1, n), rep(1, n))
+        }
+        term1[!upper.tri(term1)] <- 0
+        term2[!upper.tri(term2)] <- 0
+        jointbb <- sum((term1 + term2) * xx)/(n * (n - 
+                                                     1))
+        theta[k + 1, l + 1] <- b[i, k + 1] * b[i, l + 
+                                                 1] - jointbb
+      }
     }
-    if (p==1) {
-        return(covmatrix)
-    } else { 
-       names(covmatrixlist)<-names(data);
-       return(covmatrixlist)
-    }
+    covmatrix <- C %*% theta %*% t(C)
+    rownames(covmatrix) <- paste("L", 1:rmax, sep = "")
+    colnames(covmatrix) <- paste("L", 1:rmax, sep = "")
+    covmatrixlist[[i]] <- covmatrix
+  }
+  if (p == 1) {
+    return(covmatrix)
+  }
+  else {
+    names(covmatrixlist) <- names(data)
+    return(covmatrixlist)
+  }
 }
+
+
+
+
 
 t1lmoments<-function(data,rmax=4)
 {
@@ -307,3 +297,27 @@ t1lmoments<-function(data,rmax=4)
     }
     return(L[,1:rmax_out])
 }
+
+
+shiftedlegendre <- function(rmax)
+{
+  C <- matrix(0,rmax,rmax)
+  C[1,1] <- 1
+  if(rmax>1)
+  {  
+    C[2,1] <- -1
+    C[2,2] <- 2
+    if(rmax>2)
+    {
+      for(k in 3:rmax)
+      {
+        kn <- k - 2
+        sameorder <- (-(2*kn+1)*C[k-1,1:(k-1)] - kn*C[k-2,1:(k-1)] )/(kn+1)
+        uporder <- 2*(2*kn+1)/(kn+1)*C[k-1,1:(k-1)]
+        C[k,1:(k-1)] <- sameorder
+        C[k,2:k] <- C[k,2:k]+uporder
+      }  
+    }  
+  }
+  return(C)
+}  

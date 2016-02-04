@@ -4,6 +4,7 @@
 \alias{Lmomcov}
 \alias{Lmoments_calc}
 \alias{Lmomcov_calc}
+\alias{shiftedlegendre}
 \concept{moments}
 \concept{skewness}
 \concept{kurtosis}
@@ -18,6 +19,7 @@ Lcoefs(data,rmax=4,na.rm=FALSE,trim=c(0,0))
 Lmomcov(data,rmax=4,na.rm=FALSE)
 Lmoments_calc(data,rmax=4)
 Lmomcov_calc(data,rmax=4)
+shiftedlegendre(rmax)
 }
 \arguments{
   \item{data}{matrix or data frame.}
@@ -43,6 +45,8 @@ containing a row for each variable in data.
 \code{Lmoments_calc} is an internal function.
 
 \code{Lmomcov_calc} is an internal function.
+
+\code{shiftedlegendre} returns a matrix of a coefficients of shifted Legendre polynomials up to given order.
 }
 
 \note{Functions \code{Lmoments} and \code{Lcoefs} calculate trimmed L-moments if you specify \code{trim=c(1,1)}.}

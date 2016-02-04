@@ -27,9 +27,9 @@ title = "Lmoments: L-moments and quantile mixtures",
 
 author = personList(person("Juha","Karvanen",email="juha.karvanen@iki.fi")),
     	
-year = 2014,
- note = "R package version 1.1-6",
+year = 2016,
+ note = "R package version 1.2-2",
    
 	
-textVersion ="Juha Karvanen (2011). Lmoments: L-moments and quantile mixtures. R package version 1.1-6"
+textVersion ="Juha Karvanen (2016). Lmoments: L-moments and quantile mixtures. R package version 1.2-2"
 )

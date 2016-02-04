@@ -1,4 +1,9 @@
-1.1-6   Again a completely useless update due to a warning in CRAN checkings. 
+1.2-2	The title is now written with title case.
+
+1.2-1   Extended lmomcov to calculate the covariance matrix for L-moments of arbitrary order.
+	Added a function to generate the coefficients of shifted Legendre polynomials.
+
+1.1-6   An update due to a warning in CRAN checkings. 
 
 1.1-4   Added "journal" field to the citation info. 
         The missing field was causing a warning in CRAN checkings. 
