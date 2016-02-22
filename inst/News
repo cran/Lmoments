@@ -1,3 +1,5 @@
+1.2-3	The maximum order of L-moments (rmax) is restricted to equal the sample size.
+
 1.2-2	The title is now written with title case.
 
 1.2-1   Extended lmomcov to calculate the covariance matrix for L-moments of arbitrary order.
