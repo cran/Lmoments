@@ -25,11 +25,11 @@ citEntry(entry="manual",
  
 title = "Lmoments: L-moments and quantile mixtures",
 
-author = personList(person("Juha","Karvanen",email="juha.karvanen@iki.fi")),
+author = personList(person("Juha", "Karvanen", email="juha.karvanen@iki.fi")),
     	
-year = 2016,
- note = "R package version 1.2-3",
+year = 2019,
+ note = "R package version 1.3-1",
    
 	
-textVersion ="Juha Karvanen (2016). Lmoments: L-moments and quantile mixtures. R package version 1.2-3"
+textVersion ="Juha Karvanen, Santeri Karppinen (2019). Lmoments: L-moments and quantile mixtures. R package version 1.3-1"
 )

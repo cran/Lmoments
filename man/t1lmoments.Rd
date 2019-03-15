@@ -1,5 +1,6 @@
 \name{t1lmoments}
 \alias{t1lmoments}
+\alias{t1lmoments_calc}
 \concept{moments}
 \concept{skewness}
 \concept{kurtosis}
@@ -9,7 +10,8 @@
 \description{
 Calculates sample trimmed L-moments with trimming parameter 1. }
 \usage{
-t1lmoments(data,rmax=4)
+t1lmoments(data, rmax = 4)
+t1lmoments_calc(data, rmax = 4)
 }
 \arguments{
   \item{data}{matrix or data frame.}
@@ -17,7 +19,8 @@ t1lmoments(data,rmax=4)
 }
 \value{array of trimmed L-moments (trimming parameter = 1) up to order 4 containing a row for each variable in data.}
 
-\note{Functions \code{link{Lmoments}} and \code{link{Lcoefs}} calculate trimmed L-moments if you specify \code{trim=c(1,1)}.}
+\note{Functions \code{link{Lmoments}} and \code{link{Lcoefs}} calculate trimmed L-moments if you specify \code{trim = c(1, 1)}.
+\code{t1lmoments_calc} is an internal C++ function called by \code{t1lmoments}. The direct use of this function is not recommended.}
 
 \references{Karvanen, J. 2006. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
 \emph{Computational Statistics & Data Analysis} \bold{51}, (2), 947--959.
@@ -43,7 +46,7 @@ hist(x,breaks=histpoints,freq=FALSE,xlim=c(-10,10));
 lines(plotpoints,dcauchypoly(plotpoints,estim_params),col='red');
 lines(plotpoints,dcauchypoly(plotpoints,true_params),col='blue');
 }
-\author{Juha Karvanen \email{juha.karvanen@iki.fi}}
+\author{Juha Karvanen \email{juha.karvanen@iki.fi}, Santeri Karppinen}
 \keyword{robust}
 \keyword{univar}
 

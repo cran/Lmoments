@@ -14,11 +14,11 @@
   Calculates sample L-moments, L-coefficients and covariance matrix of L-moments. 
 }
 \usage{
-Lmoments(data,rmax=4,na.rm=FALSE,returnobject=FALSE,trim=c(0,0))
-Lcoefs(data,rmax=4,na.rm=FALSE,trim=c(0,0))
-Lmomcov(data,rmax=4,na.rm=FALSE)
-Lmoments_calc(data,rmax=4)
-Lmomcov_calc(data,rmax=4)
+Lmoments(data, rmax = 4, na.rm = FALSE, returnobject = FALSE, trim = c(0, 0))
+Lcoefs(data, rmax = 4, na.rm = FALSE, trim = c(0, 0))
+Lmomcov(data, rmax = 4, na.rm = FALSE)
+Lmoments_calc(data, rmax = 4)
+Lmomcov_calc(data, rmax = 4)
 shiftedlegendre(rmax)
 }
 \arguments{
@@ -27,7 +27,7 @@ shiftedlegendre(rmax)
   \item{na.rm}{a logical value indicating whether 'NA' values should be
           removed before the computation proceeds.}
   \item{returnobject}{a logical value indicating whether a list object should be returned instead of an array of L-moments.}
-  \item{trim}{c(0,0) for ordinary L-moments and c(1,1) for trimmed (t=1) L-moments}
+  \item{trim}{c(0, 0) for ordinary L-moments and c(1, 1) for trimmed (t = 1) L-moments}
 }
 \value{
 \code{Lmoments} returns an array of L-moments containing a row for each variable in data, or if returnobject=TRUE, 
@@ -41,15 +41,14 @@ a list containing
 containing a row for each variable in data.
 
 \code{Lmomcov} returns the covariance matrix of L-moments or a list of covariance matrices if the input has multiple columns.
+The numerical accuracy of the results decreases with increasing \code{rmax}.
+With \code{rmax > 5}, a warning is thrown, as the numerical accuracy of the results is likely less than \code{sqrt(.Machine$double.eps)}. 
 
-\code{Lmoments_calc} is an internal function.
+\code{shiftedlegendre} returns a matrix of the coefficients of the shifted Legendre polynomials up to a given order.}
 
-\code{Lmomcov_calc} is an internal function.
-
-\code{shiftedlegendre} returns a matrix of a coefficients of shifted Legendre polynomials up to given order.
-}
-
-\note{Functions \code{Lmoments} and \code{Lcoefs} calculate trimmed L-moments if you specify \code{trim=c(1,1)}.}
+\note{Functions \code{Lmoments} and \code{Lcoefs} calculate trimmed L-moments if you specify \code{trim = c(1, 1)}.
+\code{Lmoments_calc} and \code{Lmomcov_calc} are internal C++ functions called by \code{Lmoments} and \code{Lmomcov}.
+The direct use of these functions is not recommended.}
 
 \references{Karvanen, J. 2006. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
 \emph{Computational Statistics & Data Analysis} \bold{51}, (2), 947--959.
@@ -79,7 +78,7 @@ plotpoints<-seq(min(x)-1,max(x)+1,by=0.01);
 lines(plotpoints,dnormpoly(plotpoints,estim_params),col='red');
 lines(plotpoints,dnormpoly(plotpoints,true_params),col='blue');
 }
-\author{Juha Karvanen \email{juha.karvanen@iki.fi}}
+\author{Juha Karvanen \email{juha.karvanen@iki.fi}, Santeri Karppinen}
 \keyword{robust}
 \keyword{univar}
 

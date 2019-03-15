@@ -1,4 +1,6 @@
 importFrom("stats", "qnorm", "runif")
+useDynLib(Lmoments)
+importFrom(Rcpp, evalCpp)
 export(Lmoments)
 export(Lcoefs)
 export(Lmomcov)
