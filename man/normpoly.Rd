@@ -35,12 +35,12 @@ normpoly_rnd(n,param)
 }
 \details{The length the parameter vector specifies the order of the polynomial in the quantile mixture. 
 If k<-length(param) then param[1:(k-1)] contains the mixture coefficients of polynomials starting from the constant and
-param[k] is the mixture coefficient for normal distribution. (Functions normpoly\_pdf, normpoly\_cdf, normpoly\_inv and 
-normpoly\_rnd are aliases for compatibility with older versions of this package.)
+param[k] is the mixture coefficient for normal distribution. (Functions \code{normpoly_pdf}, \code{normpoly_cdf}, \code{normpoly_inv} and 
+\code{normpoly_rnd} are aliases for compatibility with older versions of this package.)
 }
 \references{Karvanen, J. 2006. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
 \emph{Computational Statistics & Data Analysis} \bold{51}, (2), 947--959.
-\url{http://www.bsp.brain.riken.jp/publications/2006/karvanen_quantile_mixtures.pdf}.
+\url{https://users.jyu.fi/~jutakarv/papers/Karvanen_quantile_mixtures.pdf}.
 }
 \seealso{\code{\link{data2normpoly4}} for the parameter estimation and
 \code{\link{dcauchypoly}} for the Cauchy-polynomial quantile mixture.
@@ -50,15 +50,15 @@ normpoly\_rnd are aliases for compatibility with older versions of this package.
 #calculates L-moments and their covariance matrix,
 #estimates parameters via L-moments and 
 #plots the true pdf and the estimated pdf together with the histogram of the data.
-true_params<-lmom2normpoly4(c(0,1,0.2,0.05));
-x<-rnormpoly(500,true_params);
-lmoments<-Lmoments(x);
-lmomcov<-Lmomcov(x);
-estim_params<-lmom2normpoly4(lmoments);
+true_params <- lmom2normpoly4(c(0,1,0.2,0.05));
+x <- rnormpoly(500,true_params);
+lmoments <- Lmoments(x);
+lmomcov <- Lmomcov(x);
+estim_params <- lmom2normpoly4(lmoments);
 hist(x,30,freq=FALSE)
-plotpoints<-seq(min(x)-1,max(x)+1,by=0.01);
-lines(plotpoints,dnormpoly(plotpoints,estim_params),col='red');
-lines(plotpoints,dnormpoly(plotpoints,true_params),col='blue');
+plotpoints <- seq(min(x)-1,max(x)+1,by=0.01);
+lines(plotpoints, dnormpoly(plotpoints,estim_params),col='red');
+lines(plotpoints, dnormpoly(plotpoints,true_params),col='blue');
 }
 \author{Juha Karvanen \email{juha.karvanen@iki.fi}}
 \keyword{distribution}

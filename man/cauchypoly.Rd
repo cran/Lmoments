@@ -36,12 +36,12 @@ cauchypoly_rnd(n,param)
 }
 \details{The length the parameter vector specifies the order of the polynomial in the quantile mixture. 
 If k<-length(param) then param[1:(k-1)] contains the mixture coefficients of polynomials starting from the constant and
-param[k] is the mixture coefficient for Cauchy distribution. (Functions cauchypoly\_pdf, cauchypoly\_cdf, cauchypoly\_inv and 
-cauchypoly\_rnd are aliases for compatibility with older versions of this package.)
+param[k] is the mixture coefficient for Cauchy distribution. (Functions \code{cauchypoly_pdf}, \code{cauchypoly_cdf}, \code{cauchypoly_inv} and 
+\code{cauchypoly_rnd} are aliases for compatibility with older versions of this package.)
 }
 \references{Karvanen, J. 2006. Estimation of quantile mixtures via L-moments and trimmed L-moments, 
 \emph{Computational Statistics & Data Analysis} \bold{51}, (2), 947--959.
-\url{http://www.bsp.brain.riken.jp/publications/2006/karvanen_quantile_mixtures.pdf}.
+\url{https://users.jyu.fi/~jutakarv/papers/Karvanen_quantile_mixtures.pdf}.
 }
 \seealso{\code{\link{data2cauchypoly4}} for the parameter estimation and
 \code{\link{dnormpoly}} for the normal-polynomial quantile mixture.}
@@ -50,15 +50,15 @@ cauchypoly\_rnd are aliases for compatibility with older versions of this packag
 #calculates the trimmed L-moments,
 #estimates parameters via trimmed L-moments and 
 #plots the true pdf and the estimated pdf together with the histogram of the data.
-true_params<-t1lmom2cauchypoly4(c(0,1,0.075,0.343));
-x<-rcauchypoly(500,true_params);
-t1lmom<-t1lmoments(x);
-estim_params<-t1lmom2cauchypoly4(t1lmom);
-plotpoints<-seq(-10,10,by=0.01);
-histpoints<-c(seq(min(x)-1,-20,length.out=50),seq(-10,10,by=0.5),seq(20,max(x)+1,length.out=50));
-hist(x,breaks=histpoints,freq=FALSE,xlim=c(-10,10));
-lines(plotpoints,dcauchypoly(plotpoints,estim_params),col='red');
-lines(plotpoints,dcauchypoly(plotpoints,true_params),col='blue');
+true_params <- t1lmom2cauchypoly4(c(0,1,0.075,0.343));
+x <- rcauchypoly(500,true_params);
+t1lmom <- t1lmoments(x);
+estim_params <- t1lmom2cauchypoly4(t1lmom);
+plotpoints <- seq(-10,10,by=0.01);
+histpoints <- c(seq(min(x)-1,-20,length.out=50),seq(-10,10,by=0.5),seq(20,max(x)+1,length.out=50));
+hist(x, breaks=histpoints, freq=FALSE, xlim=c(-10,10));
+lines(plotpoints, dcauchypoly(plotpoints,estim_params), col='red');
+lines(plotpoints, dcauchypoly(plotpoints,true_params), col='blue');
 }
 \author{Juha Karvanen \email{juha.karvanen@iki.fi}}
 \keyword{distribution}
